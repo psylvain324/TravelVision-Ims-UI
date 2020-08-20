@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@travel-vision-ims/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ]
+    }
+  },
+  "extends": "../../../apps/api/tsconfig.app.json"
+}

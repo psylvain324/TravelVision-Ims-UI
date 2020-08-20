@@ -1,0 +1,29 @@
+
+<div class="topHeader">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+      Sidenav content
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <span>
+        <mat-icon (click)="sidenav.toggle()">format_list_bulleted</mat-icon>
+        <img mat-button
+        class="logo"
+        src="../../../assets/globe-logo.png"
+        alt="TV Logo" />
+      <div class="menu-item">
+        <button mat-button [matMenuTriggerFor]="aboveMenu">Inventory</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button mat-menu-item routerLink="\inventory" routerLinkActive="active">View</button>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="aboveMenu">Orders</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button mat-menu-item routerLink="\orders" routerLinkActive="active">View</button>
+        </mat-menu>
+      </div>
+      </span>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

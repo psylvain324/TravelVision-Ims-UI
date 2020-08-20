@@ -1,0 +1,107 @@
+<div style ="margin-top: 5.5%; z-index: -2; margin-left: 1.5%;">
+  <h3>
+    <!-- <img style="width:11%; height: 5.5%; margin-bottom: 0.25%;" src='../../../../assets/globe-logo.png' alt='logo'/> -->
+    <span>
+      Inventory - View & Edit
+    </span>
+  </h3>
+
+  <div>
+    <button class="shadow" (click)="openAddDialog()" mat-icon-button [disableRipple]="true" aria-label="Add Inventory">
+      &nbsp;&nbsp;&nbsp;
+      <mat-label style="margin-top:10px; font-style: montserrat;">Add Inventory: </mat-label>
+      <button mat-fab color="warn" aria-label="Add New Inventory Modal">
+        <mat-icon title="Add New">library_add</mat-icon>
+      </button>
+    </button>
+
+    <ng-container action-bar-items>
+      <button
+      primary-color
+      travel-vision-ims-tv-mat-table-column-sorter
+      [(columns)]="displayedColumns"
+      [columnNames]="displayedColumnNames"
+      [saveName]="'inventory-table-component'"
+      style="margin-right: 1.5%; margin-left:1.5%;">
+      <mat-icon>view_column</mat-icon>
+      Columns
+      </button>
+    </ng-container>
+    <mat-form-field style="margin-right: 1.5%;">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type:</mat-label>
+      <mat-select formControlName="typeControl">
+        <mat-option *ngFor="let option of types" [value]="option">
+            {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Search Ahead Filter</mat-label>
+      <input
+        type="text"
+        placeholder="Search Ahead Filter"
+        matInput
+        formControlName="searchAheadControl"
+        [matAutocomplete]="searchAheadAuto"/>
+      <mat-autocomplete
+        autoActiveFirstOption
+        #searchAheadAuto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredSearchOptions$ | async"
+          [value]="option">
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+  </div>
+  <div style="margin-top: 1%;">
+    <travel-vision-ims-tv-mat-table>
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+
+        <!-- Total On Order Column -->
+        <ng-container matColumnDef="totalOnOrder">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total On Order </th>
+          <td mat-cell *matCellDef="let element"> {{element.totalOnOrder}} </td>
+        </ng-container>
+
+        <!-- Total Value Column -->
+        <ng-container matColumnDef="totalValue">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Value </th>
+          <td mat-cell *matCellDef="let element"> {{element.totalValue}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </travel-vision-ims-tv-mat-table>
+  </div>
+  <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+

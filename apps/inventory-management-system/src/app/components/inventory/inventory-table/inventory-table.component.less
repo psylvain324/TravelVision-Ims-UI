@@ -1,0 +1,77 @@
+.shadow {
+  -moz-box-shadow: 0px 10px 10px #F44336;
+  -webkit-box-shadow: inset 0px 5px 5px #F44336;
+  box-shadow: inset 0px 10px 10px #F44336;
+  -moz-box-shadow: 10px 0px 0px #F44336;
+  -webkit-box-shadow: inset 10px 0px 0px #F44336;
+  box-shadow: inset 10px 0px 0px #F44336;
+  width: 10%;
+  padding-bottom: 55px;
+}
+
+.mat-header-row {
+  background-color: #F44336;
+  background: repeating-linear-gradient(#F44336, #E57373);
+  -moz-box-shadow: 3px 2px 5px #E57373;
+  -webkit-box-shadow: inset 3px 2px 5px #E57373;
+  box-shadow: inset 2px 2px 2px 1px #E57373;
+  -moz-box-shadow: 6px 2px 5px #E57373;
+  -webkit-box-shadow: inset 2px 2px 5px #E57373;
+  box-shadow: inset 4px 2px 2px -1px #E57373;
+}
+
+.mat-sort-header {
+  font-size: 16px !important;
+  color: white !important;
+  font-weight:bolder;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #ECEFF1;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: white;
+}
+
+th.mat-sort-header-sorted{
+  color:black;
+}
+
+.mat-table {
+  overflow: scroll;
+  max-width: 90% !important;
+}
+
+.button-row button {
+  display: table-cell;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 5px;
+  line-break: unset;
+  min-width: 10%;
+  max-width: 15%;
+  white-space: pre-wrap;
+  overflow: auto;
+  vertical-align: middle;
+  font-size: 14px !important;
+}
+
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+
+.paginator {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
