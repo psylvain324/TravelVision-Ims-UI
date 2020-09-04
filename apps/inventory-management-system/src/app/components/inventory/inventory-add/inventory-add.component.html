@@ -1,19 +1,115 @@
-<div style ="margin-top: 5.5%; z-index: -2; margin-left: 1.5%;">
+<div style ="margin-top: 5.5%; z-index: -2; margin-left: 1.5%; min-width: 500px;">
   <h3>
-    <!-- <img style="width:11%; height: 5.5%; margin-bottom: 0.25%;" src='../../../../assets/globe-logo.png' alt='logo'/> -->
     <span>
-      Inventory - View & Edit
+      Inventory - Add New Inventory
     </span>
   </h3>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
+  <div formGroupName="inventoryForm">
+    <div>
+      <span>
+        <mat-form-field style="width: 300px;" appearance="fill">
+          <mat-label>Item Name:</mat-label>
+          <input type="text" formControlName="itemNameControl" matInput>
+        </mat-form-field>
+      
+        <mat-form-field style="width: 150px; margin-left:5%;" appearance="fill">
+          <mat-label>Quantity:</mat-label>
+          <input type="text" formControlName="quantityControl"Control matInput>
+        </mat-form-field>
+      </span>
+    </div>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <div>
+      <mat-form-field style="width: 300px;" >
+        <mat-label>Supplier:</mat-label>
+        <mat-select formControlName="supplierControl">
+          <mat-option *ngFor="let option of suppliers" [value]="option">
+              {{ option }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 150px; margin-left:5%;" appearance="fill">
+        <mat-label>Cost:</mat-label>
+        <input type="text" formControlName="costControl" matInput>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 300px;" >
+        <mat-label>Warehouse:</mat-label>
+        <mat-select formControlName="warehouseControl">
+          <mat-option *ngFor="let option of warehouses" [value]="option">
+              {{ option }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 150px; margin-left:5%;" appearance="fill">
+        <mat-label>Type:</mat-label>
+        <input type="text" formControlName="typeControl" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button style ="margin-top: 4.5%; margin-bottom: 4.5%;" (click)="addItems()" mat-raised-button color="primary">
+    Add Items
+  </button>
+
+  <div style="margin-top: 1%;">
+    <travel-vision-ims-tv-mat-table>
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        
+        <!-- Item Name Column -->
+        <ng-container matColumnDef="itemName">
+          <th mat-header-cell *matHeaderCellDef> Item Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+
+        <!-- Cost Column -->
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+        </ng-container>
+
+        <!-- Supplier Column -->
+        <ng-container matColumnDef="supplier">
+          <th mat-header-cell *matHeaderCellDef> Supplier </th>
+          <td mat-cell *matCellDef="let element"> {{element.supplier}} </td>
+        </ng-container>
+
+        <!-- Warehouse Column -->
+        <ng-container matColumnDef="warehouse">
+          <th mat-header-cell *matHeaderCellDef> Warehouse </th>
+          <td mat-cell *matCellDef="let element"> {{element.warehouse}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </travel-vision-ims-tv-mat-table>
+    </div>
+
+    <button style ="margin-top: 5.5%;" (click)="saveInventory()" mat-raised-button color="primary">
+      Save Inventory
+    </button>
 
 </div>

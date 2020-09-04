@@ -9,12 +9,12 @@ export interface Inventory {
 
 export interface InventoryItem{
   id: number;
-  name: string;
+  itemName: string;
   quantity: number;
   type: string;
   warehouse: string;
+  supplier: string
   cost: number;
-  onOrder: number;
 }
 
 export interface Order {
@@ -28,6 +28,12 @@ export interface Warehouse {
   id: number;
   name: string;
   location: string;
+}
+
+export interface Supplier {
+  id: number;
+  name: string;
+  type: string;
 }
 
 export interface InventoryResponse {
@@ -49,4 +55,10 @@ export interface WarehouseResponse {
   httpStatusMessage: string;
   data: Warehouse[];
 }
+
+export interface SupplierResponse {
+  httpStatusMessage: string;
+  data: Supplier[];
+}
+
 

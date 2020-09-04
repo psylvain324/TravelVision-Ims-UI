@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { ServiceResponse } from '../../interfaces/service-response.model';
-import { Inventory, Warehouse } from '../../interfaces/inventory.model';
+import { Inventory, Warehouse, Supplier } from '../../interfaces/inventory.model';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -39,9 +39,21 @@ export class InventoryService {
   }
 
   getAllWarehouses() {
-    const apiUrl = this.apiBaseUrl + '/warehouse';
+    const apiUrl = this.apiBaseUrl + '/warehouses';
     return this.http.get(apiUrl).pipe(
       map((data: ServiceResponse<Warehouse[]>) => {
+        return data.data;
+      }),
+      catchError(() => {
+        return throwError('There was a problem with the request');
+      })
+    );
+  }
+
+  getAllSupplier() {
+    const apiUrl = this.apiBaseUrl + '/suppliers';
+    return this.http.get(apiUrl).pipe(
+      map((data: ServiceResponse<Supplier[]>) => {
         return data.data;
       }),
       catchError(() => {

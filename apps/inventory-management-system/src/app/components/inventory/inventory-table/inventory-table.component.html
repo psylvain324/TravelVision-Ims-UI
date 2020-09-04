@@ -9,25 +9,13 @@
   <div>
     <button class="shadow" (click)="openAddDialog()" mat-icon-button [disableRipple]="true" aria-label="Add Inventory">
       &nbsp;&nbsp;&nbsp;
-      <mat-label style="margin-top:10px; font-style: montserrat;">Add Inventory: </mat-label>
+      <mat-label style="margin-top:10px; margin-left: 1.5%; font-style: montserrat;">Add Inventory: </mat-label>
       <button mat-fab color="warn" aria-label="Add New Inventory Modal">
         <mat-icon title="Add New">library_add</mat-icon>
       </button>
     </button>
 
-    <ng-container action-bar-items>
-      <button
-      primary-color
-      travel-vision-ims-tv-mat-table-column-sorter
-      [(columns)]="displayedColumns"
-      [columnNames]="displayedColumnNames"
-      [saveName]="'inventory-table-component'"
-      style="margin-right: 1.5%; margin-left:1.5%;">
-      <mat-icon>view_column</mat-icon>
-      Columns
-      </button>
-    </ng-container>
-    <mat-form-field style="margin-right: 1.5%;">
+    <mat-form-field style="margin-right: 1.5%; margin-left: 1.5%;">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
     <mat-form-field>
@@ -39,7 +27,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field style="margin-left: 1.5%;">
       <mat-label>Search Ahead Filter</mat-label>
       <input
         type="text"
@@ -56,6 +44,19 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+
+    <ng-container action-bar-items>
+      <button
+      primary-color
+      travel-vision-ims-tv-mat-table-column-sorter
+      [(columns)]="displayedColumns"
+      [columnNames]="displayedColumnNames"
+      [saveName]="'inventory-table-component'"
+      style="margin-right: 1.5%; margin-left:1.5%;">
+      <mat-icon>view_column</mat-icon>
+      Columns
+      </button>
+    </ng-container>
 
   </div>
   <div style="margin-top: 1%;">
